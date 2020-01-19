@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
 	float timeOfShot;
 	float timeOfBlackHole;
 
+	public bool isMobileBoosting = false;
+	public bool isMobileFiring = false;
+	public bool isMobileFiringBH = false;
+
     void Awake()
     {
 		health = startingHealth;
@@ -73,20 +77,20 @@ public class Player : MonoBehaviour
 		{
 			Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			transform.up = (mouseWorldPos - (Vector2)transform.position).normalized;
-			if (Input.GetButton("Jump"))
+			if (Input.GetButton("Jump") || isMobileBoosting)
 			{
 				rb.AddForce(transform.up * speed * Time.deltaTime * 50);
 				plume.enabled = true;
 				//consider removing rigidbodies and coding acceleration manually
 			}
 			else plume.enabled = false;
-			if (Input.GetButton("Fire1") && Time.time - timeOfShot > 0.2f)
+			if ((Input.GetButton("Fire1") || isMobileFiring) && Time.time - timeOfShot > 0.2f)
 			{
 				Instantiate(laser, transform.position + (transform.up * 0.1f), transform.rotation).transform.SetParent(gameObject.transform.parent);
 				source.Play();
 				timeOfShot = Time.time;
 			}
-			if (Input.GetButton("Fire2") && Time.time - timeOfBlackHole > 20)
+			if ((Input.GetButton("Fire2") || isMobileFiringBH) && Time.time - timeOfBlackHole > 20)
 			{
 				Instantiate(blackHole, transform.position, transform.rotation).transform.SetParent(gameObject.transform.parent);
 				timeOfBlackHole = Time.time;
@@ -94,4 +98,20 @@ public class Player : MonoBehaviour
 			sr.color = Color.Lerp(sr.color, Color.white, Time.deltaTime * 5f);
 		}
 	}
+
+	public void SetMobileBoosting(bool state)
+	{
+		isMobileBoosting = state;
+	}
+
+	public void SetMobileFiring(bool state)
+	{
+		isMobileFiring = state;
+	}
+
+	public void SetMobileFiringBH(bool state)
+	{
+		isMobileFiringBH = state;
+	}
+
 }

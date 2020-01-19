@@ -11,8 +11,8 @@ public class GameMaster : MonoBehaviour
 	public TextMesh highScoreCounter;
 	public AudioClip startSound;
 	public int startingLives = 3;
+	public Canvas mainMenu;
 	AudioSource source;
-	Canvas mainMenu;
 	Player player;
 	Sweeper sweeper;
 	int lives;
@@ -30,7 +30,6 @@ public class GameMaster : MonoBehaviour
     void Awake()
     {
 		source = GetComponent<AudioSource>();
-		mainMenu = FindObjectOfType<Canvas>();
 		player = FindObjectOfType<Player>();
 		sweeper = FindObjectOfType<Sweeper>();
 		lives = startingLives;
