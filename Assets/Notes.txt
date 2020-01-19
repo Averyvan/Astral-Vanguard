@@ -1,0 +1,29 @@
+Top down 2D game with spaceships that fire lasers, the goal is to kill all the enemy spacecraft without getting killed.
+Thrust on spacebar, steer and fire with mouse. The idea is you can boost in a direction and flip around to fire backwards, maintaining momentum.
+
+TODO:
+
+
+Criteria:
+X-Controllable spaceship
+X-Laser weapon
+X-Enemies that fire at player and chase
+X-Lives
+X-Score
+X-Animated thrusters
+X-Launchable black hole weapon (w/ cooldown, sucks in projectiles, prevents trapped enemies from firing)
+
+Extra Credit:
+-Obstacles that kill when you run into them at high enough speed
+-Power-ups that randomly spawn
+	-Shield
+	-Rapid-fire
+	-Scatter-shot
+	-Bonus life
+-Levels with different backgrounds and enemy types
+-Charge beam weapon
+
+Overall:
+X-Start Screen
+X-End Game
+X-Sound Effects
